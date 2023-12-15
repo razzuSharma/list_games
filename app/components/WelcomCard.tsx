@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Link } from "react-scroll";
+
 const WelcomeCard = () => {
   return (
     <main className="flex items-center justify-center min-h-screen">
@@ -10,7 +10,7 @@ const WelcomeCard = () => {
           <span className="border-b-2 border-teal-500">Fast Gaming</span>
         </h1>
         <p className="text-xl font-semibold text-gray-500 mb-4">
-          "Play Smarter, Play Harder, Play With Fast Gaming"
+          `&quot`Play Smarter, Play Harder, Play With Fast Gaming`&quot`
         </p>
         <p className="text-white mb-6">
           Immerse yourself in a world of thrilling games and interactive
@@ -23,14 +23,12 @@ const WelcomeCard = () => {
         <p className="text-lg font-bold text-yellow-400 mb-4">
           Spin, Bet, Win - Experience the Thrill of Fast Gaming!
         </p>
-        <Link
-          to="nextSection"
-          smooth={true}
-          duration={500}
-          className="bg-transparent border border-yellow-400 text-white py-2 px-4 rounded-md transition-all duration-300 cursor-pointer hover:bg-yellow-400 hover:text-black"
+        <button
+          className="bg-transparent border border-yellow-400 text-white py-2 px-4 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black"
+          onClick={() => alert("Button Clicked")} // Replace with your desired action
         >
           Join the Fun Now!
-        </Link>
+        </button>
       </div>
     </main>
   );
