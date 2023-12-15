@@ -1,13 +1,24 @@
+import WelcomeCard from "./components/WelcomCard";
 export default function Home() {
-  const svgBackground = {
-    backgroundImage: 'url("background.svg")',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-  };
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24" style={svgBackground}>
-      <h2>This is the new project</h2>
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          objectFit: "cover",
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          zIndex: "-1",
+        }}
+      >
+        <source src="bg-video.mp4" type="video/mp4" />
+        {/* You can add additional source elements for different video formats */}
+        Your browser does not support the video tag.
+      </video>
+      <WelcomeCard />
     </main>
   );
 }
