@@ -10,7 +10,7 @@ const WelcomeCard = () => {
           <span className="border-b-2 border-teal-500">Fast Gaming</span>
         </h1>
         <p className="text-xl font-semibold text-gray-500 mb-4">
-          `&quot`Play Smarter, Play Harder, Play With Fast Gaming`&quot`
+          Play Smarter, Play Harder, Play With Fast Gaming
         </p>
         <p className="text-white mb-6">
           Immerse yourself in a world of thrilling games and interactive
