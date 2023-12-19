@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa"; // Import the back button icon
 interface Game {
   name: string;
   image: string;
@@ -18,6 +19,9 @@ const CardComponent: React.FC<CardComponentProps> = ({ data }) => {
       style={{ backgroundImage: 'url("/background-image.jpg")' }}
     >
       <div className="container mx-auto py-12">
+        <Link href="/" className="flex items-center text-white mb-4">
+          <FaArrowLeft className="mr-2" />
+        </Link>
         <h1 className="text-4xl text-center font-bold text-white mb-8">
           🎰 Welcome to our Games 🎲
         </h1>
