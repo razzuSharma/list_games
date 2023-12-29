@@ -11,9 +11,9 @@ const WelcomeCard = () => {
           <span className="border-b-2 border-teal-500">Fast Gaming</span>
         </h1>
         <p className="text-base md:text-lg lg:text-xl font-semibold text-gray-500 mb-3 md:mb-4">
-          Play Smarter, Play Harder, Play With Fast Gaming
+          Play Smarter, Play Harder, Play With Fast Gaming 
         </p>
-        <p className="text-sm md:text-base text-white mb-4 md:mb-6">
+        <p className="text-md md:text-base text-white mb-4 md:mb-6">
           Immerse yourself in a world of thrilling games and interactive
           experiences, where the excitement never ends.
         </p>

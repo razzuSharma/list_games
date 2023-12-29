@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa"; // Import the back button icon
@@ -24,7 +24,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ data }) => {
       className="bg-cover bg-center min-h-screen bg-green-900"
       style={{ backgroundImage: 'url("/background-image.jpg")' }}
     >
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12"> 
         <div className="flex items-center justify-between mb-8">
           <Link href="/" className="flex items-center text-white">
             <FaArrowLeft className="mr-2 text-2xl" />
@@ -36,7 +36,9 @@ const CardComponent: React.FC<CardComponentProps> = ({ data }) => {
               placeholder="Search..."
               className="bg-transparent border-b border-white text-white pl-4 pr-8 py-2 focus:outline-none focus:border-[#abd373] transition-all duration-300"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchTerm(e.target.value)
+              }
             />
             <FaSearch className="text-white absolute right-2 cursor-pointer" />
           </div>
