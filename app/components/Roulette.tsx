@@ -1,10 +1,30 @@
 "use client";
+import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useMemo, useState } from "react";
 import { Wheel } from "react-custom-roulette";
-
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const Roulette = () => {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
+
+  const fetchDataFromDB = async () => {
+    try {
+      const { data, error } = await supabase.from("profiles").select("*");
+      if (error) {
+        console.error("Error fetching data:", error.message);
+      } else {
+        console.log("Data fetched successfully:", data);
+      }
+    } catch (error) {
+      console.error("Error fetching data:");
+    }
+  };
+
+  useEffect(() => {
+    fetchDataFromDB();
+  }, []);
 
   const data: Array<{
     option: string;
