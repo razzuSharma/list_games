@@ -11,7 +11,7 @@ const WelcomeCard = () => {
           <span className="border-b-2 border-teal-500">Fast Gaming</span>
         </h1>
         <p className="text-base md:text-lg lg:text-xl font-semibold text-gray-500 mb-3 md:mb-4">
-          Play Smarter, Play Harder, Play With Fast Gaming 
+          Play Smarter, Play Harder, Play With Fast Gaming
         </p>
         <p className="text-md md:text-base text-white mb-4 md:mb-6">
           Immerse yourself in a world of thrilling games and interactive
@@ -24,12 +24,20 @@ const WelcomeCard = () => {
         <p className="text-xs md:text-sm  lg:text-lg font-bold text-yellow-400 mb-2 md:mb-4 sm:mb-10">
           Spin, Bet, Win - Experience the Thrill of Fast Gaming!
         </p>
-        <Link
-          className="bg-transparent border  border-yellow-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-400 hover:text-black"
-          href="/games-list" // Replace with your desired action
-        >
-          Join the Fun Now!
-        </Link>
+        <div className="flex justify-center gap-4">
+          <Link
+            className="bg-transparent border  border-yellow-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-400 hover:text-black"
+            href="/games-list"
+          >
+            Join the Fun Now ⚡
+          </Link>
+          <Link
+            className="bg-transparent border  border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black"
+            href="/roulette"
+          >
+            Check for the surprises 🥳
+          </Link>
+        </div>
       </div>
     </main>
   );

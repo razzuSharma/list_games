@@ -12,7 +12,7 @@ interface CardComponentProps {
   data: Game[];
 }
 
-const CardComponent: React.FC<CardComponentProps> = ({ data }) => {
+const CardComponent = ({ data }:CardComponentProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredData = data.filter((game) =>
