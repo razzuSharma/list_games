@@ -3,7 +3,7 @@ import { Inter, Roboto_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { getServerSession } from "next-auth";
-import SessionProvider from "app/components/SessionProvider";
+import SessionProvider from "./components/SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Mono({ subsets: ["latin"] });
