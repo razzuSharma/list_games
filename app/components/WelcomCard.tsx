@@ -1,15 +1,33 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import "../globals.css";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import animations from "../../public/flash-animation.json";
+import { useRef } from "react";
 
 const WelcomeCard = () => {
+  const phoneRef = useRef<LottieRefCurrentProps>(null);
   return (
     <main className="flex items-center justify-center min-h-screen">
       <div className="text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-5 md:mb-8 relative">
-          Welcome to{" "}
-          <span className="border-b-2 border-teal-500">Fast Gaming</span>
-        </h1>
+        <div className="flex flex-col md:flex-row items-center md:items-start">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-2 md:mb-0 relative">
+            Welcome to{" "}
+            <span className="border-b-2 border-teal-500">Fast Gaming</span>
+          </h1>
+          <div className="w-32 mt-4 md:mt-0 md:ml-4">
+            <Lottie
+              lottieRef={phoneRef}
+              onComplete={() => {
+                phoneRef.current?.setDirection(-1);
+                phoneRef.current?.play();
+              }}
+              animationData={animations}
+            />
+          </div>
+        </div>
+
         <p className="text-base md:text-lg lg:text-xl font-semibold text-gray-500 mb-3 md:mb-4">
           Play Smarter, Play Harder, Play With Fast Gaming
         </p>
