@@ -1,12 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const { data: session } = useSession();
+  console.log("session data", session);
+
+  if (session) {
+    router.push("/");
+  }
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
