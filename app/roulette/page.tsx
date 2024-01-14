@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from "react";
 import Roulette from "../components/Roulette";
 import Link from "next/link";
