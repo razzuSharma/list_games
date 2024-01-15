@@ -38,7 +38,7 @@ const WhyUsPage = () => {
     <main className="min-h-screen flex justify-center items-center ">
       <div className="container mx-auto mt-8">
         <h2 className="text-4xl font-extrabold mb-8 text-white text-center">
-          Why choose us? 🌟
+          Why choose us? 🤔
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
