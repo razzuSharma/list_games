@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import Link from "next/link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa"; // Import the back button icon
+import Image from "next/image";
 interface Game {
   name: string;
   image: string;
@@ -19,10 +20,7 @@ const CardComponent = ({ data }: CardComponentProps) => {
   );
 
   return (
-    <main
-      className="bg-cover bg-center min-h-screen bg-green-900"
-      style={{ backgroundImage: 'url("/background-image.jpg")' }}
-    >
+    <main className="bg-cover bg-center min-h-screen  bg-gradient-to-r from-slate-300 to-slate-500">
       <div className="container mx-auto py-12">
         <div className="flex items-center justify-between mb-8">
           <Link href="/" className="flex items-center text-white">
@@ -49,17 +47,20 @@ const CardComponent = ({ data }: CardComponentProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filteredData.map((game: Game, index: number) => (
             <div
-              data-aos="fade-right"
+              data-aos="zoom-in"
               key={index}
-              className="group px-10 py-5 bg-gradient-to-b from-green-800 to-green-700 rounded-lg flex flex-col items-center justify-center gap-2 relative after:absolute after:h-full after:bg-[#abd373] z-20 shadow-lg after:-z-20 after:w-full after:inset-0 after:rounded-lg transition-all duration-300 hover:transition-all hover:duration-300 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden cursor-pointer after:-translate-y-full after:hover:translate-y-0 [&amp;_p]:delay-200 [&amp;_p]:transition-all"
+              className="group px-10 py-5 bg-gradient-to-b from-green-800 to-green-700 rounded-lg flex flex-col items-center justify-center"
+              style={{
+                background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${game.image}) center/cover`,
+              }}
             >
               <div
-                className="w-44 h-44 card1img aspect-square text-[#abd373] group-hover:bg-gray-800 text-5xl rounded-full p-2 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:-translate-y-2 mx-auto"
+                className="w-44 h-44 card1img aspect-square text-[#abd373] group-hover:bg-gradient-to-b group-hover:from-green-800 group-hover:to-green-700 text-5xl rounded-full p-2 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:-translate-y-2 mx-auto transform scale-100 hover:scale-110"
                 style={{
-                  background: `radial-gradient(circle at 50% 50%, transparent 70%, #abd373), url(${game.image}) center/cover`,
+                  background: `radial-gradient(circle at 50% 50%, transparent 70%, #abd373)`,
                 }}
               ></div>
-              <p className="cardtxt text-gray-200 tracking-wider group-hover:text-gray-700 text-xl font-bold">
+              <p className="cardtxt text-gray-200 tracking-wider group-hover:text-white text-xl font-bold">
                 {game.name}
               </p>
 
