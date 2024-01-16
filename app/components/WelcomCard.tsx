@@ -55,7 +55,7 @@ const WelcomeCard = () => {
             className="bg-transparent border border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black"
             onClick={() => setModalOpen(true)}
           >
-            Check for the surprises 🥳
+            Check for the surprises 🥳 
           </button>
           {modalOpen && (
             <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center gap-5">
