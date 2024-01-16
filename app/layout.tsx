@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./components/SessionProvider";
+import { AOSInit } from "./aos";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Mono({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en">
+      <AOSInit />
       <body className={inter.className}>
         <SessionProvider session={session}>{children}</SessionProvider>
       </body>
