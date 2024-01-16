@@ -37,13 +37,17 @@ const WhyUsPage = () => {
   return (
     <main className="min-h-screen flex justify-center items-center ">
       <div className="container mx-auto mt-8">
-        <h2 className="text-4xl font-extrabold mb-8 text-white text-center">
+        <h2
+          data-aos="fade-up"
+          className="text-4xl font-extrabold mb-8 text-white text-center"
+        >
           Why choose us? 🤔
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {reasons.map((reason, index) => (
             <div
+              data-aos="fade-up"
               key={index}
               className="w-full rounded-md p-8 overflow-hidden relative group transition-all duration-300 hover:scale-105 cursor-pointer"
             >
