@@ -12,7 +12,7 @@ const playfair = Playfair_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Fast Gaming",
-  description: "Online gaming be with us",
+  description: "Made for players.",
 };
 
 export default async function RootLayout({
