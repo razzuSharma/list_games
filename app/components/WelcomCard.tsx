@@ -66,7 +66,7 @@ const WelcomeCard = () => {
                     Coming Soon!
                   </h2>
                   <p className="text-gray-700 mb-4">
-                    We're working on something exciting. <br></br> Stay tuned for
+                    We are working on something exciting. <br></br> Stay tuned for
                     surprises! 🎉
                   </p>
                   <button
