@@ -1,13 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import "../globals.css";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animations from "../../public/flash-animation.json";
 import { useRef } from "react";
-
+import Image from "next/image";
 const WelcomeCard = () => {
   const phoneRef = useRef<LottieRefCurrentProps>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const avatarImage = "/happy.gif";
   return (
     <main className="flex items-center justify-center min-h-screen">
       <div className="text-center">
@@ -49,12 +51,43 @@ const WelcomeCard = () => {
           >
             Join the Fun Now ⚡
           </Link>
-          <Link
-            className="bg-transparent border  border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black"
-            href="/roulette"
+          <button
+            className="bg-transparent border border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black"
+            onClick={() => setModalOpen(true)}
           >
             Check for the surprises 🥳
-          </Link>
+          </button>
+          {modalOpen && (
+            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center gap-5">
+              <div className="absolute w-full h-full bg-black opacity-50"></div>
+              <div className="relative bg-white rounded-md p-8 flex">
+                <div className="flex flex-col text-center items-center justify-center">
+                  <h2 className="text-2xl font-bold text-teal-500 mb-4">
+                    Coming Soon!
+                  </h2>
+                  <p className="text-gray-700 mb-4">
+                    We're working on something exciting. <br></br> Stay tuned for
+                    surprises! 🎉
+                  </p>
+                  <button
+                    className="bg-teal-500 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-600"
+                    onClick={() => setModalOpen(false)}
+                  >
+                    Okay
+                  </button>
+                </div>
+                <div className="flex">
+                  <Image
+                    src={avatarImage}
+                    alt="Waiting"
+                    width={150}
+                    height={150}
+                    className="ml-5"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>
