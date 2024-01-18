@@ -5,26 +5,31 @@ import { Wheel } from "react-custom-roulette";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+
+
+
+
 const Roulette = () => {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
 
-  const fetchDataFromDB = async () => {
-    try {
-      const { data, error } = await supabase.from("profiles").select("*");
-      if (error) {
-        console.error("Error fetching data:", error.message);
-      } else {
-        console.log("Data fetched successfully:", data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:");
-    }
-  };
+  // const fetchDataFromDB = async () => {
+  //   try {
+  //     const { data, error } = await supabase.from("profiles").select("*");
+  //     if (error) {
+  //       console.error("Error fetching data:", error.message);
+  //     } else {
+  //       console.log("Data fetched successfully:", data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data:");
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchDataFromDB();
-  }, []);
+  // useEffect(() => {
+  //   fetchDataFromDB();
+  // }, []);
 
   const data: Array<{
     option: string;
@@ -90,41 +95,7 @@ const Roulette = () => {
       >
         SPIN
       </button>
-      <PoppyMessage />
     </div>
-  );
-};
-
-const PoppyMessage = () => {
-  const [showModal, setShowModal] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowModal(false);
-    }, 2500);
-  }, []);
-
-  return (
-    <>
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none z-10">
-          <div className="relative w-auto max-w-3xl mx-auto my-6">
-            <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
-              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200">
-                <h3 className="text-3xl font-semibold text-red-400">
-                  Welcome to the Roulette!
-                </h3>
-              </div>
-              <div className="relative p-6 flex-auto">
-                <p className="my-4 text-blueGray-500 text-lg leading-relaxed text-red-800">
-                  This is the Roulette for choosing winners. Have fun!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
   );
 };
 

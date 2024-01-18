@@ -4,7 +4,24 @@ const nextConfig = {
     GOOGLE_ID:
       "496598067381-9i02ojtsg36k2d2602nakrdkhivrojud.apps.googleusercontent.com",
     GOOGLE_SECRET: "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",
-    NEXTAUTH_SECRET:"QZpqiWI8Kqasia2d3MM3xFvHz18Ja7tjS151/WA04QM=",
+    NEXTAUTH_SECRET: "QZpqiWI8Kqasia2d3MM3xFvHz18Ja7tjS151/WA04QM=",
+  },
+  images: {
+    // domains: ["lh3.googleusercontent.com","platform-lookaside.fbsbx.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "platform-lookaside.fbsbx.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

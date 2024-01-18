@@ -4,7 +4,6 @@ import Link from "next/link";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animations from "../../public/flash-animation.json";
 import Image from "next/image";
-import avatarImage from "../../public/happy.gif"; // Make sure to provide the correct path
 
 const WelcomeCard = () => {
   const phoneRef = useRef<LottieRefCurrentProps>(null);
@@ -53,43 +52,12 @@ const WelcomeCard = () => {
           >
             Join the Fun Now ⚡
           </Link>
-          <button
-            onClick={() => setModalOpen(true)}
+          <Link
+            href="/roulette"
             className="bg-transparent border border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black mt-2 md:mt-0"
           >
             Check for Surprises 🥳
-          </button>
-          {modalOpen && (
-            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center gap-5">
-              <div className="absolute w-full h-full bg-black opacity-50"></div>
-              <div className="relative bg-white rounded-md p-8 flex flex-col md:flex-row items-center justify-center">
-                <div className="text-center md:text-left mb-4 md:mb-0">
-                  <h2 className="text-2xl font-bold text-teal-500 mb-4">
-                    Coming Soon!
-                  </h2>
-                  <p className="text-gray-700 mb-4">
-                    We are working on something exciting. <br /> Stay tuned for
-                    surprises! 🎉
-                  </p>
-                  <button
-                    onClick={() => setModalOpen(false)}
-                    className="bg-teal-500 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-600"
-                  >
-                    Okay
-                  </button>
-                </div>
-                <div className="flex-shrink-0">
-                  <Image
-                    src={avatarImage}
-                    alt="Waiting"
-                    width={150}
-                    height={150}
-                    className="ml-5"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+          </Link>
         </div>
       </div>
     </main>
