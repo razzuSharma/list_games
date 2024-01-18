@@ -3,11 +3,6 @@ import React from "react";
 const WhyUsPage = () => {
   const reasons = [
     {
-      title: "Quality Products",
-      description:
-        "We meticulously curate and deliver products of the highest quality to exceed your expectations.",
-    },
-    {
       title: "Customer Satisfaction",
       description:
         "We are committed to providing outstanding customer service, ensuring your satisfaction is our top priority.",
@@ -16,21 +11,6 @@ const WhyUsPage = () => {
       title: "Fast Delivery",
       description:
         "Experience the speed and reliability of our delivery services, bringing your orders to your doorstep promptly.",
-    },
-    {
-      title: "Innovation",
-      description:
-        "We embrace innovation to stay ahead, continuously enhancing our offerings with the latest and best solutions.",
-    },
-    {
-      title: "Transparent Communication",
-      description:
-        "Open and honest communication is the foundation of our relationship with customers, ensuring trust and clarity.",
-    },
-    {
-      title: "Certainity",
-      description:
-        "We embrace the loyalty to our customers and also add more of the certain aspects in there",
     },
   ];
 
