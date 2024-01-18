@@ -5,6 +5,7 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./components/SessionProvider";
 import { AOSInit } from "./aos";
+import Footer from "./components/Footer"
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Mono({ subsets: ["latin"] });
@@ -27,6 +28,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>{children}</SessionProvider>
       </body>
+      <Footer/>
     </html>
   );
 }

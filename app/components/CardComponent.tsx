@@ -1,7 +1,8 @@
-import React, { ReactNode, useState } from "react";
+// src/components/CardComponent.tsx
+import React, { useState } from "react";
 import Link from "next/link";
-import { FaSearch, FaArrowLeft } from "react-icons/fa"; // Import the back button icon
-import Image from "next/image";
+import { FaSearch, FaArrowLeft } from "react-icons/fa";
+
 interface Game {
   name: string;
   image: string;
@@ -14,13 +15,16 @@ interface CardComponentProps {
 
 const CardComponent = ({ data }: CardComponentProps) => {
   const [searchTerm, setSearchTerm] = useState("");
-
+  const imageUrl = "/image.jpg";
   const filteredData = data.filter((game) =>
     game.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <main className="bg-cover bg-center min-h-screen  bg-gradient-to-r from-slate-300 to-slate-500">
+    <main
+      className="bg-cover bg-center min-h-screen bg-gradient-to-r from-slate-300 to-slate-500"
+      style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover" }}
+    >
       <div className="container mx-auto py-12">
         <div className="flex items-center justify-between mb-8">
           <Link href="/" className="flex items-center text-white">
@@ -44,37 +48,27 @@ const CardComponent = ({ data }: CardComponentProps) => {
           🎰 Our Games 🎲
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-3 lg:grid-cols-5 md:grid-cols-4 gap-4">
           {filteredData.map((game: Game, index: number) => (
-            <div
-              data-aos="zoom-in"
+            <Link
               key={index}
-              className="group px-10 py-5 bg-gradient-to-b from-green-800 to-green-700 rounded-lg flex flex-col items-center justify-center"
-              style={{
-                background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${game.image}) center/cover`,
-              }}
+              href={game.link}
+              passHref
+              className="group relative p-2 sm:p-4 transition-all duration-300 hover:scale-105"
             >
-              <div
-                className="w-44 h-44 card1img aspect-square text-[#abd373] group-hover:bg-gradient-to-b group-hover:from-green-800 group-hover:to-green-700 text-5xl rounded-full p-2 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:-translate-y-2 mx-auto transform scale-100 hover:scale-110"
-                style={{
-                  background: `radial-gradient(circle at 50% 50%, transparent 70%, #abd373)`,
-                }}
-              ></div>
-              <p className="cardtxt text-gray-200 tracking-wider group-hover:text-white text-xl font-bold">
+              <div className="w-28 h-28 sm:w-36 sm:h-36 bg-cover bg-center rounded-full border-4 border-[#abd373] shadow-md mx-auto">
+                <div className="flex items-center justify-center h-full">
+                  <img
+                    src={game.image}
+                    alt={game.name}
+                    className="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full"
+                  />
+                </div>
+              </div>
+              <p className="cardtxt text-gray-200 tracking-wider text-xs sm:text-sm font-bold mt-2 text-center">
                 {game.name}
               </p>
-
-              <div className="ordernow flex flex-row justify-between items-center w-full">
-                <a
-                  href={game.link}
-                  className="btun4 lg:inline-flex items-center gap-3 group-hover:bg-white/10 bg-[#abd373] shadow-[10px_10px_150px_#ff9f0d] cursor-pointer py-2 px-4 text-sm font-semibold rounded-full butn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Game
-                </a>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
