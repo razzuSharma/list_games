@@ -53,10 +53,10 @@ const WelcomeCard = () => {
             Join the Fun Now ⚡
           </Link>
           <Link
-            href="/roulette"
+            href="/form-user"
             className="bg-transparent border border-teal-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-300 hover:text-black mt-2 md:mt-0"
           >
-            Check for Surprises 🥳
+            Enter the giveaway 🥳
           </Link>
         </div>
       </div>
