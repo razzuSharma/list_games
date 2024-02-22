@@ -1,4 +1,3 @@
-// src/components/CardComponent.tsx
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
@@ -23,7 +22,7 @@ const CardComponent = ({ data }: CardComponentProps) => {
   return (
     <main
       className="bg-cover bg-center min-h-screen bg-gradient-to-r from-slate-300 to-slate-500"
-      style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover" }}
+      style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover", opacity: 1 }}
     >
       <div className="container mx-auto py-12">
         <div className="flex items-center justify-between mb-8">
@@ -65,7 +64,7 @@ const CardComponent = ({ data }: CardComponentProps) => {
                   />
                 </div>
               </div>
-              <p className="cardtxt text-gray-200 tracking-wider text-xs sm:text-sm font-bold mt-2 text-center">
+              <p className="cardtxt text-orange-200 tracking-wider text-2xl sm:text-xl font-bold mt-2 text-center">
                 {game.name}
               </p>
             </Link>
