@@ -1,7 +1,7 @@
 "use client";
 
 import { createClient } from "@supabase/supabase-js";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Wheel } from "react-custom-roulette";
 import Modal from "./Modal";
 import Link from "next/link";
@@ -26,7 +26,6 @@ const WinningForm = ({ winningAmount, onSubmit }: any) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      // Check if the database already contains the provided cashapp or username
       const existingParticipant = await supabase
         .from("roulette")
         .select("*")
@@ -34,12 +33,10 @@ const WinningForm = ({ winningAmount, onSubmit }: any) => {
         .single();
 
       if (existingParticipant.data) {
-        // Display a message indicating that the user has already participated
         alert("You have already participated in the giveaway!");
         return;
       }
 
-      // If not, proceed to insert the new participant into the database
       const { data, error } = await supabase.from("roulette").insert([
         {
           firstname: formData.firstName,
@@ -123,7 +120,35 @@ const Roulette = () => {
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [displayForm, setDisplayForm] = useState(false);
   const [winningAmount, setWinningAmount] = useState("");
-  const [showMessage, setShowMessage] = useState(false); // State to control message visibility
+  const [showMessage, setShowMessage] = useState(false);
+  const [sessionSpun, setSessionSpun] = useState(false);
+  const [userEntered, setUserEntered] = useState(false);
+  const [spinCount, setSpinCount] = useState(() => {
+    const storedSpinCount = localStorage.getItem("spinCount");
+    return storedSpinCount ? parseInt(storedSpinCount, 10) : 1;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sessionSpun", sessionSpun.toString());
+    localStorage.setItem("userEntered", userEntered.toString());
+    localStorage.setItem("spinCount", spinCount.toString());
+  }, [sessionSpun, userEntered, spinCount]);
+
+  useEffect(() => {
+    const sessionSpunFlag = localStorage.getItem("sessionSpun");
+    if (sessionSpunFlag === "true") {
+      setSessionSpun(true);
+    }
+
+    const userEnteredFlag = localStorage.getItem("userEntered");
+    if (userEnteredFlag === "true") {
+      setUserEntered(true);
+    }
+
+    if (spinCount === 0) {
+      setShowMessage(true);
+    }
+  }, []);
 
   const data = useMemo(
     () => [
@@ -156,10 +181,12 @@ const Roulette = () => {
   );
 
   const handleSpinClick = () => {
-    if (!mustSpin) {
+    if (!mustSpin && !sessionSpun && spinCount > 0) {
       const newPrizeNumber = Math.floor(Math.random() * data.length);
       setPrizeNumber(newPrizeNumber);
       setMustSpin(true);
+      setSpinCount((prevSpinCount) => prevSpinCount - 1);
+      setSessionSpun(true);
     }
   };
 
@@ -186,7 +213,13 @@ const Roulette = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <p className="text-base md:text-lg text-gray-400 mb-4">
-        Spin the wheel and embrace the madness! 🌀
+        <span
+          style={{ color: spinCount === 0 ? "red" : "green" }}
+          className="text-2xl font-bold"
+        >
+          {" "}
+          Spin count ({spinCount})
+        </span>
       </p>
       <Wheel
         mustStartSpinning={mustSpin}
@@ -202,24 +235,30 @@ const Roulette = () => {
         />
       )}
       <Modal show={showMessage} onClose={closeModal}>
-        <p className="text-lg text-red-500 mb-4">See you next time!</p>
-        <button
-          className="bg-yellow-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-500"
-          onClick={closeModal}
-        >
-          Close
-        </button>
-        <Link
-          href="/"
-          className="bg-blue-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-blue-500 ml-2"
-        >
-          Visit Our Games
-        </Link>
+        <p className="text-black p-5 mb-5">
+          Thank you for participating! Unfortunately, you have exhausted all
+          your spins for this session.
+        </p>
+        <div className="flex justify-center">
+          <button
+            className="bg-yellow-400 text-black py-2 px-4 rounded-md text-sm md:text-base mr-2 transition-all duration-300 hover:bg-yellow-500"
+            onClick={closeModal}
+          >
+            Close
+          </button>
+          <Link
+            href="/"
+            className="bg-blue-400 text-white py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-blue-500 ml-2"
+          >
+            Visit Our Games
+          </Link>
+        </div>
       </Modal>
+
       <button
         className="bg-yellow-400 text-black py-2 px-4 tracking-widest w-48 rounded-md text-sm md:text-base mt-5 transition-all duration-300 hover:bg-yellow-500"
         onClick={handleSpinClick}
-        disabled={displayForm} // Disable the spin button if the form is displayed
+        disabled={displayForm || sessionSpun || spinCount === 0}
       >
         SPIN
       </button>
