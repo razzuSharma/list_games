@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +9,8 @@ const WelcomeCard = () => {
     <main className="flex items-center justify-center min-h-screen">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Text Column */}
-        <div className="flex flex-col justify-center items-center md:items-start relative">
+        <div className="flex flex-col justify-center items-center md:items-start relative mt-12 md:mt-0">
+          {" "}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left">
             Welcome to <span className="text-yellow-400">Fast Gaming 🚀</span>
           </h1>
@@ -31,19 +31,25 @@ const WelcomeCard = () => {
               href="/games-list"
               className="bg-yellow-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-500 hover:text-black focus:bg-yellow-600 focus:text-black"
             >
-              Join the Fun Now ⚡
+              Click for the game links 👉
             </Link>
             <Link
               href="/roulette"
-              className="bg-teal-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-500 hover:text-black focus:bg-teal-600 focus:text-black mt-2 md:mt-0"
+              className="bg-teal-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-teal-500 hover:text-black focus:bg-teal-600 focus:text-black mt-4 md:mt-0"
             >
-              Enter the giveaway 🥳
+              Enter the Roulette 🥳
             </Link>
             <Link
               href="/rules"
-              className="bg-yellow-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-500 hover:text-black focus:bg-yellow-600 focus:text-black"
+              className="bg-yellow-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-500 hover:text-black focus:bg-yellow-600 focus:text-black mt-4 md:mt-0"
             >
               View Our Rules 🔥
+            </Link>
+            <Link
+              href="/form-user"
+              className="bg-teal-400 text-black py-2 px-4 rounded-md text-sm md:text-base transition-all duration-300 hover:bg-yellow-500 hover:text-black focus:bg-yellow-600 focus:text-black mt-4 md:mt-0"
+            >
+              Enter the giveaway 🙋
             </Link>
           </div>
         </div>
@@ -56,7 +62,7 @@ const WelcomeCard = () => {
               alt="image"
               height={500}
               width={800}
-              className="rounded-full ml-20"
+              className="rounded-full ml-20 md:ml-0 md:mt-8"
             />
           </div>
         </div>
@@ -66,4 +72,3 @@ const WelcomeCard = () => {
 };
 
 export default WelcomeCard;
-
