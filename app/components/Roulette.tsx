@@ -28,7 +28,7 @@ const WinningForm = ({ winningAmount, onSubmit }: any) => {
     try {
       // Check if the database already contains the provided cashapp or username
       const existingParticipant = await supabase
-        .from("giveaway")
+        .from("roulette")
         .select("*")
         .eq("cashapp", formData.cashapp)
         .single();
@@ -40,7 +40,7 @@ const WinningForm = ({ winningAmount, onSubmit }: any) => {
       }
 
       // If not, proceed to insert the new participant into the database
-      const { data, error } = await supabase.from("giveaway").insert([
+      const { data, error } = await supabase.from("roulette").insert([
         {
           firstname: formData.firstName,
           lastname: formData.lastName,
