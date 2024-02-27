@@ -8,7 +8,6 @@ const WelcomeCard = () => {
   return (
     <main className="flex items-center justify-center min-h-screen">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Text Column */}
         <div className="flex flex-col justify-center items-center md:items-start relative mt-12 md:mt-0">
           {" "}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left">
@@ -54,7 +53,6 @@ const WelcomeCard = () => {
           </div>
         </div>
 
-        {/* Image Column */}
         <div className="text-center md:text-right bg-transparent overflow-hidden">
           <div className="mt-0">
             <Image
