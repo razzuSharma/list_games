@@ -1,9 +1,6 @@
 import React from "react";
 import WelcomeCard from "./components/WelcomCard";
 
-interface WelcomeCardProps {
-  dynamicId: string;
-}
 export default function Home() {
   const dynamicId = "main-theme";
   const imageLink = "/bg-semi-final.jpg";

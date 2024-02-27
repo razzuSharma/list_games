@@ -6,23 +6,20 @@ const WelcomeCard = () => {
   const imageLink = "/avatar-main-image.png";
 
   return (
-    <main className="flex items-center justify-center min-h-screen">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-white">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Text Column */}
         <div className="flex flex-col justify-center items-center md:items-start relative mt-12 md:mt-0">
-          {" "}
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left text-gray-800">
             Welcome to <span className="text-yellow-400">Fast Gaming 🚀</span>
           </h1>
-          <p className="text-lg leading-relaxed mb-4 text-center md:text-left">
-            Immerse yourself in a world of thrilling games and interactive
-            experiences, where the excitement never ends.
+          <p className="text-lg leading-relaxed mb-4 text-center md:text-left text-gray-800">
+            Immerse yourself in a world of thrilling games and interactive experiences, where the excitement never ends.
           </p>
-          <p className="text-base leading-relaxed mb-4 text-center md:text-left">
-            Join our vibrant community of gamers and enjoy the latest
-            innovations in online gaming.
+          <p className="text-base leading-relaxed mb-4 text-center md:text-left text-gray-800">
+            Join our vibrant community of gamers and enjoy the latest innovations in online gaming.
           </p>
-          <p className="text-xs md:text-sm lg:text-base font-bold text-yellow-400 mb-2 md:mb-4 sm:mb-10 text-center md:text-left">
+          <p className="text-sm md:text-base font-bold text-yellow-400 mb-2 md:mb-4 sm:mb-10 text-center md:text-left">
             Spin, Bet, Win - Experience the Thrill of{" "}
             <span className="text-teal-500">Fast Gaming</span>!
           </p>
@@ -55,7 +52,7 @@ const WelcomeCard = () => {
         </div>
 
         {/* Image Column */}
-        <div className="text-center md:text-right bg-transparent overflow-hidden">
+        <div className="text-center md:text-right">
           <div className="mt-0">
             <Image
               src={imageLink}

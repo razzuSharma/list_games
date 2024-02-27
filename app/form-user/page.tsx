@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createClient } from "@supabase/supabase-js";
@@ -12,10 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const GiveawayForm = () => {
   const [openModal, setOpenModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-
-  const router = useRouter()
-
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -35,7 +32,6 @@ const GiveawayForm = () => {
 
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        // Submit form data to Supabase
         const { data, error } = await supabase.from("giveaway").insert([
           {
             name: values.name,
@@ -48,17 +44,13 @@ const GiveawayForm = () => {
           throw new Error(`Error submitting form: ${error.message}`);
         }
 
-        // Clear form values
         formik.resetForm();
 
-        // Set formSubmitted to true
         setFormSubmitted(true);
-        
-        // Optionally, you can show a success message or redirect the user
+
         console.log("Form submitted successfully!", data);
       } catch (error: any) {
         console.error("Error submitting form:", error.message);
-        // Handle the error as needed
       } finally {
         setSubmitting(false);
       }
@@ -188,7 +180,9 @@ const GiveawayForm = () => {
         </form>
       ) : (
         <div className="bg-white dark:bg-gray-700 shadow-md rounded-md p-8 max-w-md w-full sm:w-96 text-center">
-          <h2 className="text-lg font-semibold mb-4 text-green-700">Form Submitted Successfully!</h2>
+          <h2 className="text-lg font-semibold mb-4 text-green-700">
+            Form Submitted Successfully!
+          </h2>
           <p>Your form has been submitted successfully.</p>
           <button
             onClick={handleContinue}
