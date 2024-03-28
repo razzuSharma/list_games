@@ -9,7 +9,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const GiveawayForm = () => {
+const GiveawayForm = () => {  
   const [openModal, setOpenModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const router = useRouter();
@@ -45,7 +45,6 @@ const GiveawayForm = () => {
         }
 
         formik.resetForm();
-
         setFormSubmitted(true);
 
         console.log("Form submitted successfully!", data);
