@@ -7,7 +7,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const WelcomeCard = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const imageLink = "/avatar-main-image.png";
-  const textColor = isDarkMode ? "text-white" : "text-black";
+  const textColor = isDarkMode ? "text-white" : "text-teal-600";
   const imageink = "/bg-semi-final.jpg";
 
   const toggleMode = () => {
