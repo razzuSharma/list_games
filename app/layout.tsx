@@ -5,7 +5,8 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./components/SessionProvider";
 import { AOSInit } from "./aos";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto_Mono({ subsets: ["latin"] });
@@ -26,9 +27,10 @@ export default async function RootLayout({
     <html lang="en">
       <AOSInit />
       <body className={inter.className}>
+        <Analytics />
         <SessionProvider session={session}>{children}</SessionProvider>
       </body>
-      <Footer/>
+      <Footer />
     </html>
   );
 }
